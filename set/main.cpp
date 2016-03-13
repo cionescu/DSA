@@ -3,9 +3,14 @@
 #include "Set.h"
 
 int main() {
-  std::cout<<"Blah";
-
   Set set;
+
+  set.push(1);
+  set.push(2);
+  set.push(3);
+  set.push(2);
+  set.push(3);
+  set.print();
 
   return 0;
 }
