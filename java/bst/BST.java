@@ -50,7 +50,7 @@ public class BST {
   public void display(Node root) {
     if (root != null) {
       display(root.left);
-      System.out.println(" " + root.data);
+      System.out.print(" " + root.data);
       display(root.right);
     }
   }
@@ -61,6 +61,7 @@ public class BST {
     tree.insert(4);
     tree.insert(1);
     tree.display(tree.root);
+    System.out.println("");
     System.out.println("Finding 1 " + tree.find(1));
     System.out.println("Finding 2 " + tree.find(2));
   }
