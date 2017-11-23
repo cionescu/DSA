@@ -3,7 +3,12 @@
 count = gets.chomp.to_i
 numbers = gets.chomp.split(" ").map(&:to_i)
 puts numbers.sum.to_f / numbers.count # Mean
-puts numbers.sort[(numbers.count/2-1)..(numbers.count/2)].sum.to_f / 2 # Median
+median = if numbers.count % 2 == 0
+  numbers.sort[(numbers.count/2-1)..(numbers.count/2)].sum.to_f / 2
+else
+  median = numbers[numbers.count / 2]
+end
+puts median
 
 sorted_occurrences = numbers.each_with_object(Hash.new(0)) { |num, counts| counts[num] += 1 }.to_a.sort_by{ |el| [el.last, el.first] }
 _, occ_count = sorted_occurrences.last
