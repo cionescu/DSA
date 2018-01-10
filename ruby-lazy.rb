@@ -64,7 +64,11 @@ end
 n = gets.chomp.to_i
 
 prime_palindromes = -> (count) do
-    2.upto(Float::INFINITY).lazy.filter_map{ |nr| nr if prime?(nr) and palindrome?(nr) }.first(count)
+  2.upto(Float::INFINITY).lazy.filter_map do |nr|
+    if palindrome?(nr) and prime?(nr)
+      nr
+    end
+  end.first(count)
 end
 
 p prime_palindromes.(n)
