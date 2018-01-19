@@ -9,5 +9,6 @@
 library(swirl)
 swirl()
 ```
-
+# Install swirl into a conda environment
+`conda create -n  swirl r-base`
 
