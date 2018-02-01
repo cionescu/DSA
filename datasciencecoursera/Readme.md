@@ -12,3 +12,7 @@ swirl()
 # Install swirl into a conda environment
 `conda create -n  swirl r-base`
 
+# Fix xlsx install
+```bash
+sudo R CMD javareconf
+```
