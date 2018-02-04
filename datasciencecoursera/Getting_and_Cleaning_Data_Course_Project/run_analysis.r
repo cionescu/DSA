@@ -16,7 +16,7 @@ set_labels <- function(df, activity_labels) {
   df
 }
 
-# Associate column names with features
+# Associate column names with features and clean up the column names
 associate_features <- function(df, features) {
   col_names <- gsub("-", "_", features$V2)
   col_names <- gsub("[^a-zA-Z\\d_]", "", col_names)
@@ -24,13 +24,13 @@ associate_features <- function(df, features) {
   df
 }
 
-## Adjusts column name in the data set identifying test participants
+##Adjusts column name in the data set identifying test participants
 set_df_name <- function(df) {
   names(df) <- "Subject"
   df
 }
 
-## Download and extract a zip file with datasets
+# Download and extract a zip file with datasets
 if (!file.exists(dir)) {
   download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile = "data.zip", method = "curl")
   unzip("data.zip")
@@ -42,19 +42,18 @@ features <- load_file("features.txt", dir)
 ## Load activity labels
 activity_labels <- load_file("activity_labels.txt", dir)
 
-## Use descriptive activity names to name the activities in the data set
-#### Training data
+# Training data
 train_set <- load_file("X_train.txt", dir, "train") %>% associate_features(features)
 train_lbl <- load_file("y_train.txt", dir, "train") %>% set_labels(activity_labels)
 train_sub <- load_file("subject_train.txt", dir, "train") %>% set_df_name
 
-#### Test data
+# Test data
 test_set <- load_file("X_test.txt", dir, "test") %>% associate_features(features)
 test_lbl <- load_file("y_test.txt", dir, "test") %>% set_labels(activity_labels)
 test_sub <- load_file("subject_test.txt", dir, "test") %>% set_df_name
 
 ## Merge the training and the test sets
-merge_data <- rbind(
+dataset <- rbind(
     cbind(train_set, train_lbl, train_sub),
     cbind(test_set, test_lbl, test_sub)
   ) %>%
@@ -64,11 +63,10 @@ merge_data <- rbind(
   )
 
 ## Create a second, independent tidy data set with the average of each variable for each activity and each subject
-id_cols <- c("Subject", "Activity")
 tidy_data <- melt(
-    merge_data,
-    id = id_cols,
-    measure.vars = setdiff(colnames(merge_data), id_cols)
+    dataset,
+    id = c("Subject", "Activity"),
+    measure.vars = setdiff(colnames(dataset), c("Subject", "Activity"))
   ) %>%
   dcast(Subject + Activity ~ variable, mean)
 

@@ -29,4 +29,5 @@ You should create one R script called run_analysis.R that does the following.
 ## Results
 
 * I have produced a script written in R [run_analysis.r](https://github.com/cionescu/DSA/blob/master/datasciencecoursera/Getting_and_Cleaning_Data_Course_Project/run_analysis.r) that will download and process the UCI HAR dataset.
-* By running the script (easiest way is inside a R console by running `source("run_analysis.r")`), it produces the clean dataset stored in [data.txt]()
+* By running the script (easiest way is inside a R console by running `source("run_analysis.r")`), it produces the clean dataset stored in [data.txt](https://github.com/cionescu/DSA/blob/master/datasciencecoursera/Getting_and_Cleaning_Data_Course_Project/data.txt)
+* A file named [Codebook.md]()
