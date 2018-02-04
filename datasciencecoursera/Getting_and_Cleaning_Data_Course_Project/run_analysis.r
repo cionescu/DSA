@@ -73,4 +73,4 @@ tidy_data <- melt(
   dcast(Subject + Activity ~ variable, mean)
 
 ## Save the result
-write.table(tidy_data, file = "tidy_data.txt", sep = ",", row.names = FALSE)
+write.table(tidy_data, file = "data.txt", sep = ",", row.names = FALSE)

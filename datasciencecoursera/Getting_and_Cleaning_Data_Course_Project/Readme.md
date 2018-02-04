@@ -25,3 +25,8 @@ You should create one R script called run_analysis.R that does the following.
 * Appropriately labels the data set with descriptive variable names.
 * From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+
+## Results
+
+* I have produced a script written in R [run_analysis.r](https://github.com/cionescu/DSA/blob/master/datasciencecoursera/Getting_and_Cleaning_Data_Course_Project/run_analysis.r) that will download and process the UCI HAR dataset.
+* By running the script (easiest way is inside a R console by running `source("run_analysis.r")`), it produces the clean dataset stored in [data.txt]()
