@@ -1,4 +1,4 @@
-pollution <- read.csv("avgpm25.csv", colClasses=c("numeric", "character", "factor", "numeric", "numeric"))
+pollution <- read.csv("data/avgpm25.csv", colClasses=c("numeric", "character", "factor", "numeric", "numeric"))
 
 five_number_summary <- function() {
   summary(pollution$pm25)
