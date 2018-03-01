@@ -21,3 +21,19 @@ bar_plot <- function() {
 }
 
 # 2D graphs
+
+side_by_side_box_plots <- function() {
+  boxplot(pm25 ~ region, data=pollution, col="red")
+}
+
+scatter <- function() {
+  with(pollution, plot(latitude, pm25, col=region))
+  abline(h=12, lwd=2, lty=2)
+}
+
+lattice_plot <- function() {
+  library(lattice)
+  data(state)
+  state <- data.frame(state.x77, region=state.region)
+  xyplot(Life.Exp ~ Income | region, data=state, layout=c(4,1))
+}
