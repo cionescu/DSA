@@ -65,3 +65,16 @@ base_plot <- function() {
   with(airquality, plot(Wind, Ozone))
   title(main="Ozone and Wind in NY City")
 }
+
+# Multiple base plots with
+
+multi_plot <- function() {
+  library(datasets)
+  par(mfrow=c(1,2), mar=c(2, 2, 2, 2), oma=c(2, 2, 2, 2))
+  with(airquality, {
+    plot(Wind, Ozone, main="Wind and Ozone")
+    plot(Solar.R, Ozone, main="Solar and Ozone")
+    mtext("Comparing Wind to Ozone and Solar to Ozone", outer=TRUE)
+    text(10, 1, "Text", col="red")
+  })
+}
