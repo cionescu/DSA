@@ -57,3 +57,11 @@ boxplot_distribution <- function() {
   airquality <- transform(airquality, Month = factor(Month))
   boxplot(Ozone ~ Month, airquality, xlab="Month", ylab="Ozone")
 }
+
+# Arbitrary plot with the base plotting function
+
+base_plot <- function() {
+  library(datasets)
+  with(airquality, plot(Wind, Ozone))
+  title(main="Ozone and Wind in NY City")
+}
