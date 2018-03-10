@@ -65,11 +65,7 @@ class Example
   end
 
   def to(expectation)
-    if expectation.is_a?(Proc)
-      @test_result = expectation.call(result)
-    else
-      @test_result = expectation
-    end
+    @test_result = expectation.call(result)
   end
 
   def eq(expectation)
@@ -79,7 +75,7 @@ class Example
   def method_missing(method_name, *arguments, &block)
     class_method_name = "#{method_name.to_s.gsub('be_', '')}?"
     if method_name.to_s =~ /be_(.*)/ && result.respond_to?(class_method_name)
-      result.send(class_method_name, *arguments, &block)
+      Proc.new { |n| n.send(class_method_name) }
     else
       super
     end
