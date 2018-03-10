@@ -78,3 +78,14 @@ multi_plot <- function() {
     text(10, 1, "Text", col="red")
   })
 }
+
+# Different colors for groups
+
+group_colours <- function() {
+  x <- rnorm(100)
+  y <- x + rnorm(100)
+  g <- gl(2, 50, labels=c("Male", "Female"))
+  plot(x, y, type="n")
+  points(x[g=="Male"], y[g=="Male"], col="green")
+  points(x[g=="Female"], y[g=="Female"], col="blue")
+}
