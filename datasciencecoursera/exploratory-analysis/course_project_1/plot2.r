@@ -4,7 +4,8 @@ dates <- paste(data$Date, data$Time)
 data$DateTime <- strptime(dates, "%d/%m/%Y %H:%M:%S")
 data[c("Date", "Time")] <- list(NULL)
 
-hist(data$Global_active_power, col="red", xlab="Global Active Power (kilowatts)", ylab="Frequency", main="Global Active Power")
+plot(data$DateTime, data$Global_active_power, type="n", ylab="Global Active Power (kilowatts)", xlab="")
+lines(data$DateTime, data$Global_active_power, type="l")
 
-dev.copy(png,'plot1.png')
+dev.copy(png,'plot2.png')
 dev.off()
