@@ -1,8 +1,8 @@
 # To activate this environment, use:
-`> source activate swirl`
+`> conda activate swirl`
 
 # To deactivate this environment, use:
-`> source deactivate swirl`
+`> conda deactivate swirl`
 
 # Run the exercise
 ```r
