@@ -4,8 +4,8 @@ dates <- paste(data$Date, data$Time)
 data$DateTime <- strptime(dates, "%d/%m/%Y %H:%M:%S")
 data[c("Date", "Time")] <- list(NULL)
 
+png("plot2.png", width = 480, height = 480, units = "px")
+par(bg = "transparent")
 plot(data$DateTime, data$Global_active_power, type="n", ylab="Global Active Power (kilowatts)", xlab="")
 lines(data$DateTime, data$Global_active_power, type="l")
-
-dev.copy(png,'plot2.png')
 dev.off()
