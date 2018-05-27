@@ -1,24 +1,26 @@
-# README
+# Background
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Retailers organise their business structure like a hierarchical tree, for example they could have many employees, in many shops, which could be part of an area, which could be part of a region, etc.
 
-Things you may want to cover:
+StorIQ lets business conduct different types of reviews against any part of that hierarchy. We then allow the business to view reports across the hierarchy.
 
-* Ruby version
+# Expectation
 
-* System dependencies
+Build the classes in ruby necessary to represent the expectations below.
 
-* Configuration
+It should allow the creation of entities in a hierarchy as described above (the entities are linked, in a tree).
 
-* Database creation
+It should allow reviews and scores to be created for these entities.
 
-* Database initialization
+It should be possible to create unlimited levels of entities in the hierarchy (i.e. don't create individual classes for employees, shops, areas etc, create a single class for an entity)
 
-* How to run the test suite
+It should be possible to get the average score for an entity, which is an average of it's own scores and the scores of it's linked entities in the hierarchy.
 
-* Services (job queues, cache servers, search engines, etc.)
+Here is list of expectations:
 
-* Deployment instructions
-
-* ...
+ - I can create many entities in the hierarchy
+ - I can create a review for an entity
+ - I can add many scores to a review (a score is a integer between 1 and 5)
+ - I can view the average score for a particular entity
+ - I can view the average score for a particular review of an entity
+ - I can view the average scores for all entities
