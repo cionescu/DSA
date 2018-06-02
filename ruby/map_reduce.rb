@@ -11,7 +11,7 @@ class MyQueue
   end
 
   def map &block
-    @workers << Concurrent::Promise.execute(&block)
+    @workers << Concurrent::Future.execute(&block)
   end
 
   def reduce accumulator
