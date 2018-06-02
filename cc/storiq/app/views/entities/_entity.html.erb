@@ -3,7 +3,13 @@
     <h3>
       <%= entity.name %>
       <span class="text-muted">
-        (<%= entity.entity_type %>)
+        (
+          <%= entity.entity_type %>
+          |
+          Average: <%= entity.average.truncate(2) %>
+          |
+          Average including children: <%= entity.average_incl_children.truncate(2) %>
+        )
       </span>
     </h3>
 
