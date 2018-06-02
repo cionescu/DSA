@@ -1,6 +1,6 @@
 class EntitiesController < ApplicationController
   def index
-    @root_entities = Entity.root
+    @root_entities = Entity.root.includes(children: :reviews)
     @entity = Entity.new
   end
 

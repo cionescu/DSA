@@ -1,11 +1,40 @@
 <div class="card">
   <div class="card-body">
-    <h3><%= entity.name %></h3>
-    <h4 class="text-muted"><%= entity.entity_type %></h4>
-    <% entity.children.each do |entity| %>
-      <%= render 'entity', entity: entity %>
+    <h3>
+      <%= entity.name %>
+      <span class="text-muted">
+        (<%= entity.entity_type %>)
+      </span>
+    </h3>
+
+    <% if entity.reviews.any? %>
+      <p>
+        Reviews:
+        <% entity.reviews.each do |review| %>
+          <p>
+            <%= review.score %>
+            <%= fa_icon "star" %>
+            |
+            <%= review.title %>
+          </p>
+        <% end %>
+      </p>
     <% end %>
-    <h4>Add new entity</h4>
-    <%= render 'form', parent: entity %>
+
+    <% if entity_types(entity).any? # If there are any types below current in the tree %>
+      <hr />
+      <%= render 'form', parent: entity %>
+    <% end %>
+
+    <hr />
+    <%= render 'reviews/form', entity: entity %>
+
+    <% if entity.children.any? %>
+      <hr />
+      <h4>Children</h4>
+      <% entity.children.each do |entity| %>
+        <%= render 'entity', entity: entity %>
+      <% end %>
+    <% end %>
   </div>
 </div>

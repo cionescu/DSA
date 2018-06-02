@@ -20,4 +20,6 @@
 
 class Review < ApplicationRecord
   belongs_to :entity
+
+  validates :score, :title, presence: true
 end

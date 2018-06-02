@@ -10,22 +10,22 @@
   </head>
 
   <body>
-    <ul class="flash list-unstyled">
-      <% flash.each do |name, msg| %>
-        <li class="alert alert-dismissable <%= flash_class(name) %>">
-          <button class="close" type="button" data-dismiss="alert">
-            <span aria-hidden="true">
-              &times;
-            </span>
-            <span class="sr-only">
-              Close
-            </span>
-          </button>
-          <%= msg %>
-        </li>
-      <% end %>
-    </ul>
     <div class="container">
+      <ul class="flash list-unstyled">
+        <% flash.each do |name, msg| %>
+          <li class="alert alert-dismissable <%= flash_class(name) %>">
+            <button class="close" type="button" data-dismiss="alert">
+              <span aria-hidden="true">
+                &times;
+              </span>
+              <span class="sr-only">
+                Close
+              </span>
+            </button>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
       <%= yield %>
     </div>
   </body>

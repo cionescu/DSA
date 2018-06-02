@@ -3,6 +3,7 @@
 <p class="text-muted">Create new root Entity</p>
 <%= render 'form' %>
 
+<hr />
 <% @root_entities.each do |entity| %>
   <%= render 'entity', entity: entity %>
 <% end %>
