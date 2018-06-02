@@ -15,7 +15,7 @@
 #
 
 class Entity < ApplicationRecord
-  belongs_to :parent, class_name: 'Entity', foreign_key: 'entity_id'
+  belongs_to :parent, class_name: 'Entity', foreign_key: 'entity_id', optional: true
 
   has_many :children, class_name: 'Entity', foreign_key: 'entity_id'
   has_many :reviews
@@ -24,4 +24,6 @@ class Entity < ApplicationRecord
 
   validates :entity_type, inclusion: { in: ENTITY_TYPES }
   validates :entity_type, :name, presence: true
+
+  scope :root, -> { where(entity_id: nil) }
 end

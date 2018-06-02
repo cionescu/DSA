@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <ul class="flash list-unstyled">
+      <% flash.each do |name, msg| %>
+        <li class="alert alert-dismissable <%= flash_class(name) %>">
+          <button class="close" type="button" data-dismiss="alert">
+            <span aria-hidden="true">
+              &times;
+            </span>
+            <span class="sr-only">
+              Close
+            </span>
+          </button>
+          <%= msg %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

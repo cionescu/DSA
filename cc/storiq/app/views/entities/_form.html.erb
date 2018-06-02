@@ -1,3 +1,16 @@
-<%= form_for @entity do |f| %>
-  
-<% end %>
+<% parent ||= nil %>
+
+<div class="card" style="max-width: 440px;">
+  <div class="card-body">
+    <%= form_for @entity, html: { class: 'form-inline' } do |f| %>
+      <% if parent %>
+        <%= f.hidden_field :entity_id, value: parent.id %>
+      <% end %>
+      <%= f.select :entity_type, entity_types(parent), {}, class: "form-control my-1 mr-sm-2" %>
+      <%= f.text_field :name, placeholder: "Name", class: "form-control mb-2 mr-sm-2" %>
+      <div class="form-group">
+        <%= f.submit :save, class: "btn btn-success mb-2" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h3><%= entity.name %></h3>
+    <h4 class="text-muted"><%= entity.entity_type %></h4>
+    <% entity.children.each do |entity| %>
+      <%= render 'entity', entity: entity %>
+    <% end %>
+    <h4>Add new entity</h4>
+    <%= render 'form', parent: entity %>
+  </div>
+</div>

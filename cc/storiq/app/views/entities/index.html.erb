@@ -1,2 +1,8 @@
 <h1>Entities</h1>
 
+<p class="text-muted">Create new root Entity</p>
+<%= render 'form' %>
+
+<% @root_entities.each do |entity| %>
+  <%= render 'entity', entity: entity %>
+<% end %>
