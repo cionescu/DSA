@@ -38,6 +38,8 @@ class Entity < ApplicationRecord
     reviews.map(&:score).reduce(:+).to_f / reviews.count
   end
 
+  private
+
   def reviews_for node
     reviews = node.reviews.to_a
     return reviews if node.children.none?
