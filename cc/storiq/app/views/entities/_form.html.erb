@@ -1,6 +1,6 @@
 <% parent ||= nil %>
 
-<%= form_for @entity, html: { class: 'form-inline' } do |f| %>
+<%= form_for @entity, html: { class: 'form-inline', data: { parent_id: parent&.id } } do |f| %>
   <label class="my-1 mr-2">Add an Entity</label>
   <% if parent %>
     <%= f.hidden_field :entity_id, value: parent.id %>

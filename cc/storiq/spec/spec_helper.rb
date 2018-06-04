@@ -33,5 +33,5 @@ def json_response
 end
 
 def html_response
-  Nokogiri::XML(response.body)
+  Nokogiri::XML(page.body)
 end
