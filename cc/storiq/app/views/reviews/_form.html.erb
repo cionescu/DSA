@@ -1,4 +1,4 @@
-<%= form_for Review.new, html: { class: 'form-inline' } do |f| %>
+<%= form_for Review.new, html: { class: 'form-inline', data: { parent_id: entity.id } } do |f| %>
   <label class="my-1 mr-2">Rate this Entity</label>
   <%= f.hidden_field :entity_id, value: entity.id %>
   <%= f.select :score, (1..5).to_a, {}, class: "form-control my-1 mr-sm-2" %>

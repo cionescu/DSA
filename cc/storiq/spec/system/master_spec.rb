@@ -48,4 +48,26 @@ RSpec.describe 'Entities Index' do
     expect(page).to have_text("The entity was successfully created")
     expect(Entity.last.name).to eq "My New Area"
   end
+
+  it "creates a review" do
+    visit '/'
+
+    within("body .card #new_review[data-parent-id='#{region.id}'") do
+      select '4', from: 'review_score'
+      fill_in 'review_title', with: 'The best and original review'
+      click_on 'save'
+    end
+
+    expect(page).to have_text("The review has been successfully posted")
+
+    last_review = Review.last
+    expect(last_review.score).to eq 4
+    expect(last_review.title).to eq "The best and original review"
+    expect(last_review.entity).to eq region
+
+    # Also check that the new review is displayed on the page
+
+    outer_card = html_response.css("body .card").first
+    expect(outer_card.inner_text.squish).to match /4 | The best and original review/
+  end
 end

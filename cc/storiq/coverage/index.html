@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-06-04T16:09:40+03:00">2018-06-04T16:09:40+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-06-04T16:48:14+03:00">2018-06-04T16:48:14+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">95.88%</span></span>
+    (<span class="covered_percent"><span class="green">95.8%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.57
+         2.98
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>10</b> files in total.
-    <b>97</b> relevant lines. 
-    <span class="green"><b>93</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed </span>
+    <b>11</b> files in total.
+    <b>119</b> relevant lines. 
+    <span class="green"><b>114</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -67,7 +67,17 @@
         <td>12</td>
         <td>11</td>
         <td>1</td>
-        <td>1.4</td>
+        <td>1.8</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#0caeb22470c7534b49fcf926ae5aa295432ad149" class="src_link" title="app/controllers/reviews_controller.rb">app/controllers/reviews_controller.rb</a></td>
+        <td class="yellow strong">88.89 %</td>
+        <td>17</td>
+        <td>9</td>
+        <td>8</td>
+        <td>1</td>
+        <td>0.9</td>
       </tr>
       
       <tr>
@@ -77,7 +87,7 @@
         <td>8</td>
         <td>5</td>
         <td>3</td>
-        <td>0.6</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -87,7 +97,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>12.8</td>
+        <td>18.4</td>
       </tr>
       
       <tr>
@@ -107,7 +117,7 @@
         <td>22</td>
         <td>22</td>
         <td>0</td>
-        <td>4.5</td>
+        <td>6.4</td>
       </tr>
       
       <tr>
@@ -143,9 +153,9 @@
       <tr>
         <td class="strong"><a href="#acd4d062d505c062f5593534afbb4e077ed0c067" class="src_link" title="spec/system/master_spec.rb">spec/system/master_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>51</td>
-        <td>30</td>
-        <td>30</td>
+        <td>73</td>
+        <td>43</td>
+        <td>43</td>
         <td>0</td>
         <td>1.5</td>
       </tr>
@@ -223,14 +233,14 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="3">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="3">
+          <span class="hits">6</span>
           
           <code class="ruby">    @root_entities = Entity.root.includes(children: :reviews)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="4">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="4">
+          <span class="hits">6</span>
           
           <code class="ruby">    @entity = Entity.new</code>
         </li>
@@ -348,6 +358,127 @@
 </div>
 
       
+        <div class="source_table" id="0caeb22470c7534b49fcf926ae5aa295432ad149">
+  <div class="header">
+    <h3>app/controllers/reviews_controller.rb</h3>
+    <h4><span class="yellow">88.89 %</span> covered</h4>
+    <div>
+      <b>9</b> relevant lines. 
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class ReviewsController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def create</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @review = Review.create(review_params)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    if @review.valid?</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      redirect_to root_path, flash: { success: &quot;The review has been successfully posted&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">      # Same as for entities. TODO: Implement a new / edit page</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
+          
+          <code class="ruby">      redirect_to root_path, flash: { errors: @review.errors.full_messages }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def review_params</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    params.require(:review).permit(:entity_id, :score, :title)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="ad235be4307696e9a2599b2531deeab667fc2222">
   <div class="header">
     <h3>app/helpers/application_helper.rb</h3>
@@ -374,8 +505,8 @@
           <code class="ruby">  def flash_class(flash_name)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
           
           <code class="ruby">    class_name = case flash_name.to_sym</code>
         </li>
@@ -410,8 +541,8 @@
           <code class="ruby">      when :success, :ok</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="9">
+          <span class="hits">2</span>
           
           <code class="ruby">        &quot;success&quot;</code>
         </li>
@@ -434,8 +565,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="13">
+          <span class="hits">2</span>
           
           <code class="ruby">    &quot;alert-#{class_name}&quot;</code>
         </li>
@@ -483,14 +614,14 @@
           <code class="ruby">  def entity_types parent</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="3">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="32" data-linenumber="3">
+          <span class="hits">32</span>
           
           <code class="ruby">    types = Entity::ENTITY_TYPES</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="4">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="32" data-linenumber="4">
+          <span class="hits">32</span>
           
           <code class="ruby">    return types unless parent</code>
         </li>
@@ -501,8 +632,8 @@
           <code class="ruby">    # We only want to allow creation of children types</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="6">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="26" data-linenumber="6">
+          <span class="hits">26</span>
           
           <code class="ruby">    types[types.index(parent.entity_type)+1 .. -1]</code>
         </li>
@@ -737,8 +868,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="28">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="7" data-linenumber="28">
+          <span class="hits">7</span>
           
           <code class="ruby">  scope :root, -&gt; { where(entity_id: nil) }</code>
         </li>
@@ -755,14 +886,14 @@
           <code class="ruby">  def average</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="31">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="13" data-linenumber="31">
+          <span class="hits">13</span>
           
           <code class="ruby">    return &quot;N/A&quot; if reviews.none?</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="32">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="12" data-linenumber="32">
+          <span class="hits">12</span>
           
           <code class="ruby">    reviews.pluck(:score).reduce(:+).to_f / reviews.count</code>
         </li>
@@ -785,20 +916,20 @@
           <code class="ruby">  def average_incl_children</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="36">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="13" data-linenumber="36">
+          <span class="hits">13</span>
           
           <code class="ruby">    reviews = reviews_for(self)</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="37">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="13" data-linenumber="37">
+          <span class="hits">13</span>
           
           <code class="ruby">    return &quot;N/A&quot; if reviews.none?</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="38">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="12" data-linenumber="38">
+          <span class="hits">12</span>
           
           <code class="ruby">    reviews.map(&amp;:score).reduce(:+).to_f / reviews.count</code>
         </li>
@@ -833,26 +964,26 @@
           <code class="ruby">  def reviews_for node</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="44">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="20" data-linenumber="44">
+          <span class="hits">20</span>
           
           <code class="ruby">    reviews = node.reviews.to_a</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="45">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="20" data-linenumber="45">
+          <span class="hits">20</span>
           
           <code class="ruby">    return reviews if node.children.none?</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="46">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="46">
+          <span class="hits">6</span>
           
           <code class="ruby">    node.children.each do |child|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="47">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="7" data-linenumber="47">
+          <span class="hits">7</span>
           
           <code class="ruby">      reviews &lt;&lt; reviews_for(child)</code>
         </li>
@@ -863,8 +994,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="49">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="49">
+          <span class="hits">6</span>
           
           <code class="ruby">    reviews.flatten</code>
         </li>
@@ -1464,8 +1595,8 @@
     <h3>spec/system/master_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>30</b> relevant lines. 
-      <span class="green"><b>30</b> lines covered</span> and
+      <b>43</b> relevant lines. 
+      <span class="green"><b>43</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1491,26 +1622,26 @@
           <code class="ruby">RSpec.describe &#39;Entities Index&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="4">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="4">
+          <span class="hits">5</span>
           
           <code class="ruby">  let!(:region) { create(:entity, :region) }</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="5">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="5">
+          <span class="hits">5</span>
           
           <code class="ruby">  let!(:area) { create(:entity, :area, parent: region) }</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="6">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="6">
+          <span class="hits">5</span>
           
           <code class="ruby">  let!(:region_review) { create(:review, entity: region, score: 5) }</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="7">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="7">
+          <span class="hits">5</span>
           
           <code class="ruby">  let!(:area_review) { create(:review, entity: area, score: 3) }</code>
         </li>
@@ -1527,14 +1658,14 @@
           <code class="ruby">  before do</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="10">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="10">
+          <span class="hits">4</span>
           
           <code class="ruby">    driven_by :selenium_chrome_headless</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="11">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="11">
+          <span class="hits">4</span>
           
           <code class="ruby">    Capybara.default_selector = :css</code>
         </li>
@@ -1774,6 +1905,138 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  it &quot;creates a review&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="53">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit &#39;/&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    within(&quot;body .card #new_review[data-parent-id=&#39;#{region.id}&#39;&quot;) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      select &#39;4&#39;, from: &#39;review_score&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      fill_in &#39;review_title&#39;, with: &#39;The best and original review&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      click_on &#39;save&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_text(&quot;The review has been successfully posted&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    last_review = Review.last</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(last_review.score).to eq 4</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(last_review.title).to eq &quot;The best and original review&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(last_review.entity).to eq region</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="68">
+          
+          
+          <code class="ruby">    # Also check that the new review is displayed on the page</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    outer_card = html_response.css(&quot;body .card&quot;).first</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(outer_card.inner_text.squish).to match /4 | The best and original review/</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">end</code>
