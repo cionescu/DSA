@@ -32,6 +32,8 @@ class ItemWorker
   end
 end
 
+## MAIN ----------
+
 queue = MyQueue.new
 worker = ItemWorker.new
 
