@@ -7,6 +7,8 @@ class CreateInvoices < ActiveRecord::Migration[5.2]
       t.float :value_usd
       t.float :value_ron
 
+      t.string :title
+
       t.timestamps
     end
   end

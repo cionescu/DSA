@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Invoice Date</td>
+      <td>Value USD</td>
+      <td>Exchange Date</td>
+      <td>Exchange Rate</td>
+      <td>Value RON</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
