@@ -4,7 +4,7 @@ class BnrFetcher < ApplicationJob
 
   def perform(invoice_id)
     @invoice = Invoice.find(invoice_id)
-    date = invoice.invoice_date
+    date = invoice.invoice_date.prev_day
     while !(data = response.css("DataSet Body Cube[date='#{date.to_s}'] Rate[currency='USD']").first)
       date = date.prev_day
       puts "Trying for #{date.to_s}"

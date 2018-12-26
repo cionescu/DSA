@@ -67,7 +67,7 @@ class InvoiceFetcherJob < ApplicationJob
     puts 'No data found.' and return if response.values.empty?
     date = Date.parse(response.values[2][5])
     invoice = Invoice.find_or_create_by(invoice_date: date)
-    invoice.update!(title: name, value_usd: response.values[22][5].gsub(/\D/,'').to_i / 100)
+    invoice.update!(value_usd: response.values[22][5].gsub(/\D/,'').to_i / 100)
     BnrFetcher.new.perform(invoice.id)
   end
 end

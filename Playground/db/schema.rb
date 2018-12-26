@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 2018_12_25_125757) do
     t.float "value_usd"
     t.float "value_ron"
     t.string "title"
+    t.integer "tax_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["invoice_date"], name: "index_invoices_on_invoice_date"
   end
 
 end

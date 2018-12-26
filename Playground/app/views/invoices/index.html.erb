@@ -1,4 +1,4 @@
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <td>Title</td>
@@ -7,13 +7,34 @@
       <td>Exchange Date</td>
       <td>Exchange Rate</td>
       <td>Value RON</td>
+      <td>Tax Year</td>
     </tr>
   </thead>
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.title %></td>
+        <td><%= invoice.invoice_date %></td>
+        <td>$<%= number_with_delimiter(invoice.value_usd.to_i, delimiter: '.', precision: 0) %></td>
+        <td><%= invoice.exchange_date %></td>
+        <td><%= invoice.exchange_rate %></td>
+        <td><%= number_with_delimiter(invoice.value_ron, delimiter: '.', separator: ',') %> RON</td>
+        <td><%= invoice.tax_year %></td>
       </tr>
     <% end %>
   </tbody>
+</table>
+
+<h3>Estimator</h3>
+
+<table class="table table-striped">
+  <% keys = @estimator.first.to_h.keys %>
+  <% keys.each do |key| %>
+    <tr>
+      <th><%= key %>
+      <% @estimator.each do |item| %>
+        <td><%= item[key] %></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>
