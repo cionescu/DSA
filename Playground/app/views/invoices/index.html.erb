@@ -1,18 +1,21 @@
+<%= link_to "Update Invoices", invoices_path, data: { method: "POST" }, class: "btn btn-link" %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <td>Title</td>
-      <td>Invoice Date</td>
-      <td>Value USD</td>
-      <td>Exchange Date</td>
-      <td>Exchange Rate</td>
-      <td>Value RON</td>
-      <td>Tax Year</td>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Invoice Date</th>
+      <th>Value USD</th>
+      <th>Exchange Date</th>
+      <th>Exchange Rate</th>
+      <th>Value RON</th>
+      <th>Tax Year</th>
     </tr>
   </thead>
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
+        <td><%= invoice.id %></td>
         <td><%= invoice.title %></td>
         <td><%= invoice.invoice_date %></td>
         <td>$<%= number_with_delimiter(invoice.value_usd.to_i, delimiter: '.', precision: 0) %></td>

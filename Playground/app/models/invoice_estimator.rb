@@ -1,7 +1,7 @@
 class InvoiceEstimator
   attr_reader :invoices, :years
 
-  TARGET = 455_000.freeze
+  TARGET = 460_000.freeze
 
   def initialize
     @invoices = Invoice.limit(50)
@@ -23,6 +23,8 @@ class InvoiceEstimator
 
       OpenStruct.new({
         Year: year,
+        TARGET_USD: ActiveSupport::NumberHelper.number_to_currency(TARGET / latest_exchange_rate),
+        TARGET_USD_PM: ActiveSupport::NumberHelper.number_to_currency((TARGET / latest_exchange_rate) / 12),
         USD: ActiveSupport::NumberHelper.number_to_currency(relevant_invoices.inject(0){ |sum, invoice| sum += invoice.value_usd }.to_i),
         RON: ActiveSupport::NumberHelper.number_to_delimited(total_ron),
         MONTHS: relevant_invoices.count,
