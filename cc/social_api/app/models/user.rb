@@ -17,4 +17,20 @@ class User < ApplicationRecord
   has_many :followers
 
   validates :username, presence: true, uniqueness: true
+
+  def follow target
+    return false if follows?(target)
+    followers.create(target: target)
+  end
+
+  def unfollow target
+    return false unless follows?(target)
+    followers.find_by(target: target).destroy
+  end
+
+  private
+
+  def follows? target
+    followers.find_by(target: target).present?
+  end
 end
