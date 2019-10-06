@@ -1,7 +1,7 @@
 class InvoiceEstimator
   attr_reader :invoices, :years
 
-  TARGET = 460_000.freeze
+  TARGET = 465_000.freeze
 
   def initialize
     @invoices = Invoice.limit(50)
@@ -44,6 +44,6 @@ class InvoiceEstimator
   end
 
   def find_invoices(year)
-    invoices.select{ |invoice| invoice.tax_year == year }
+    invoices.select{ |invoice| invoice.tax_year == year }.reject{ |invoice| invoice.tax_year == Time.current.year && invoice.invoice_date.month == Time.current.month }
   end
 end
