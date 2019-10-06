@@ -1,3 +1,4 @@
 example_id                               | status | run_time        |
 ---------------------------------------- | ------ | --------------- |
-./spec/requests/api/users_spec.rb[1:1:1] | passed | 0.02426 seconds |
+./spec/requests/api/users_spec.rb[1:1:1] | passed | 0.02278 seconds |
+./spec/requests/api/users_spec.rb[1:1:2] | passed | 0.01165 seconds |
