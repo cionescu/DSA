@@ -1,4 +1,4 @@
-#DETAILS
+# DETAILS
 
 The goals of this task are to build a Rest API using Ruby on Rails 6+ API that performs the following basic functionality:
 
