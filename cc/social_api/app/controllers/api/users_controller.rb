@@ -1,6 +1,7 @@
 module Api
   class UsersController < ApplicationController
-    before_action :find_user, :find_target, only: [:follow, :unfollow]
+    before_action :find_user, only: [:follow, :unfollow, :followers]
+    before_action :find_target, only: [:follow, :unfollow]
 
     rescue_from ActiveRecord::RecordNotFound do |err|
       object_not_found = @user ? 'target' : 'user'
@@ -24,6 +25,9 @@ module Api
     end
 
     def followers
+      # Prevent a URL of death. TODO: Pagination
+      followers = User.joins(:follower_targets).where(followers: { user_id: @user.id })
+      render json: UserSerializer.new(followers).serializable_hash
     end
 
     def follow

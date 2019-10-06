@@ -15,12 +15,13 @@
 
 class User < ApplicationRecord
   has_many :followers
+  has_many :follower_targets, class_name: 'Follower', foreign_key: :target_id
 
   validates :username, presence: true, uniqueness: true
 
   def follow target
     return false if follows?(target)
-    followers.create(target: target)
+    Follower.create(target: target, user: self)
   end
 
   def unfollow target

@@ -27,6 +27,20 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
+  describe 'GET /api/user/:user_id/followers' do
+    let(:user) { create(:user) }
+    let!(:follower) { create(:follower, user: user, target: build(:user, username: 'thetruenorth')) }
+    let!(:other_follower) { create(:follower, user: user, target: build(:user, username: 'ygrittethewild')) }
+
+    it 'returns the two followers' do
+      get api_user_followers_path(user)
+
+      expect(response).to have_http_status :ok
+      expect(json_response.dig('data').count).to eq 2
+      expect(json_response.dig('data').map{ |user| user.dig('attributes', 'username') }).to contain_exactly('thetruenorth', 'ygrittethewild')
+    end
+  end
+
   describe 'POST /api/users/:user_id/follow/:id' do
     let(:user) { create(:user) }
     let(:target) { create(:user) }
