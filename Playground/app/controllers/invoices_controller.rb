@@ -1,11 +1,31 @@
 class InvoicesController < ApplicationController
   def index
-    @invoices = Invoice.order(invoice_date: :asc).limit(50)
+    @invoices = case params[:year]
+    when nil
+      invoice_scope
+    else
+      invoice_scope.where(tax_year: params[:year])
+    end.limit(50)
     @estimator = InvoiceEstimator.call
   end
 
+  def new
+    @invoice = Invoice.new
+  end
+
   def create
-    Invoice.setup
+    if params[:invoice]
+      @invoice = Invoice.create params.require(:invoice).to_unsafe_h
+      BnrFetcher.new.perform(@invoice.id)
+    else
+      Invoice.setup
+    end
     redirect_to root_path
+  end
+
+  private
+
+  def invoice_scope
+    Invoice.order(invoice_date: :asc)
   end
 end

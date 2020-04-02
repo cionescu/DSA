@@ -1,43 +1,47 @@
-<%= link_to "Update Invoices", invoices_path, data: { method: "POST" }, class: "btn btn-link" %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Invoice Date</th>
-      <th>Value USD</th>
-      <th>Exchange Date</th>
-      <th>Exchange Rate</th>
-      <th>Value RON</th>
-      <th>Tax Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @invoices.each do |invoice| %>
+<div class="container-fluid">
+  <%= link_to "Update Invoices", invoices_path, data: { method: "POST" }, class: "btn btn-link" %>
+  <%= link_to 'Add Invoice', new_invoice_path, class: 'btn btn-link' %>
+  <%= link_to 'This year', root_path(year: Time.current.year), class: 'btn btn-link' %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= invoice.id %></td>
-        <td><%= invoice.title %></td>
-        <td><%= invoice.invoice_date %></td>
-        <td>$<%= number_with_delimiter(invoice.value_usd.to_i, delimiter: '.', precision: 0) %></td>
-        <td><%= invoice.exchange_date %></td>
-        <td><%= invoice.exchange_rate %></td>
-        <td><%= number_with_delimiter(invoice.value_ron, delimiter: '.', separator: ',') %> RON</td>
-        <td><%= invoice.tax_year %></td>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Invoice Date</th>
+        <th>Value USD</th>
+        <th>Exchange Date</th>
+        <th>Exchange Rate</th>
+        <th>Value RON</th>
+        <th>Tax Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice.id %></td>
+          <td><%= invoice.title %></td>
+          <td><%= invoice.invoice_date %></td>
+          <td>$<%= number_with_delimiter(invoice.value_usd.to_i, delimiter: '.', precision: 0) %></td>
+          <td><%= invoice.exchange_date %></td>
+          <td><%= invoice.exchange_rate %></td>
+          <td><%= number_with_delimiter(invoice.value_ron, delimiter: '.', separator: ',') %> RON</td>
+          <td><%= invoice.tax_year %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h3>Estimator</h3>
+
+  <table class="table table-striped">
+    <% keys = @estimator.first.to_h.keys %>
+    <% keys.each do |key| %>
+      <tr>
+        <th><%= key %>
+        <% @estimator.each do |item| %>
+          <td><%= item[key] %></td>
+        <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<h3>Estimator</h3>
-
-<table class="table table-striped">
-  <% keys = @estimator.first.to_h.keys %>
-  <% keys.each do |key| %>
-    <tr>
-      <th><%= key %>
-      <% @estimator.each do |item| %>
-        <td><%= item[key] %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+  </table>
+</div>

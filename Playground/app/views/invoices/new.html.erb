@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @invoice, url: invoices_path do |f| %>
+    <%= f.input :invoice_date %>
+    <%= f.input :value_usd %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 class InvoiceEstimator
   attr_reader :invoices, :years
 
-  TARGET = 465_000.freeze
+  TARGET = 479_000.freeze
 
   def initialize
     @invoices = Invoice.limit(50)
@@ -15,10 +15,11 @@ class InvoiceEstimator
   def call
     years.map do |year|
       relevant_invoices = find_invoices(year)
+      invoice_count = relevant_invoices.map(&:invoice_date).map(&:month).uniq.count
       total_ron = relevant_invoices.inject(0){ |sum, invoice| sum += invoice.value_ron }.round(2)
-      remaining = relevant_invoices.count >= 12 ? "N/A" : (TARGET - total_ron).round(2)
+      remaining = invoice_count >= 12 ? "N/A" : (TARGET - total_ron).round(2)
       latest_exchange_rate = Invoice.order(invoice_date: :desc).first.exchange_rate
-      remaining_ron = remaining_per_month_ron(remaining, relevant_invoices.count)
+      remaining_ron = remaining_per_month_ron(remaining, invoice_count)
       remaining_usd = remaining_ron.to_i.zero? ? "N/A" : (remaining_ron / latest_exchange_rate.to_f).to_i
 
       OpenStruct.new({
@@ -27,9 +28,9 @@ class InvoiceEstimator
         TARGET_USD_PM: ActiveSupport::NumberHelper.number_to_currency((TARGET / latest_exchange_rate) / 12),
         USD: ActiveSupport::NumberHelper.number_to_currency(relevant_invoices.inject(0){ |sum, invoice| sum += invoice.value_usd }.to_i),
         RON: ActiveSupport::NumberHelper.number_to_delimited(total_ron),
-        MONTHS: relevant_invoices.count,
+        MONTHS: invoice_count,
         "Remaining RON" => ActiveSupport::NumberHelper.number_to_delimited(remaining),
-        "Remaining per month" => ActiveSupport::NumberHelper.number_to_delimited(remaining_per_month_ron(remaining, relevant_invoices.count)),
+        "Remaining per month" => ActiveSupport::NumberHelper.number_to_delimited(remaining_per_month_ron(remaining, invoice_count)),
         "Remaining USD" => ActiveSupport::NumberHelper.number_to_currency(remaining_usd)
       })
     end
