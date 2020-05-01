@@ -13,6 +13,7 @@
         <th>Exchange Rate</th>
         <th>Value RON</th>
         <th>Tax Year</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
           <td><%= invoice.exchange_rate %></td>
           <td><%= number_with_delimiter(invoice.value_ron, delimiter: '.', separator: ',') %> RON</td>
           <td><%= invoice.tax_year %></td>
+          <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         </tr>
       <% end %>
     </tbody>

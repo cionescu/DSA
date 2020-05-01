@@ -1,0 +1,9 @@
+<div class="container">
+  <%= simple_form_for @invoice do |f| %>
+    <%= f.input :invoice_date %>
+    <%= f.input :value_usd %>
+    <%= f.input :title %>
+    <%= f.input :tax_year, disabled: true %>
+    <%= f.submit :save, class: 'btn btn-success' %>
+  <% end %>
+</div>

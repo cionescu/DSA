@@ -23,6 +23,17 @@ class InvoicesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @invoice = Invoice.find params.require(:id)
+  end
+
+  def update
+    @invoice = Invoice.find(params.require(:id))
+    @invoice.update! params.require(:invoice).permit!
+    BnrFetcher.new.perform(@invoice.id)
+    redirect_to root_path
+  end
+
   private
 
   def invoice_scope
